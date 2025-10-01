@@ -22,6 +22,15 @@ export default function ProductGallery({ product }: ProductGalleryProps) {
   // Safe access with fallback to first image
   const currentImage = images[selectedImage] || images[0]
 
+  // TypeScript guard - ensure currentImage is defined
+  if (!currentImage) {
+    return (
+      <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
+        <span className="text-gray-400">No image available</span>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-4">
       {/* Main Image */}
