@@ -19,12 +19,15 @@ export default function ProductGallery({ product }: ProductGalleryProps) {
     )
   }
 
+  // Safe access with fallback to first image
+  const currentImage = images[selectedImage] || images[0]
+
   return (
     <div className="space-y-4">
       {/* Main Image */}
       <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
         <img
-          src={`${images[selectedImage].imgix_url}?w=1200&h=1200&fit=crop&auto=format,compress`}
+          src={`${currentImage.imgix_url}?w=1200&h=1200&fit=crop&auto=format,compress`}
           alt={product.title}
           className="w-full h-full object-cover"
         />
